@@ -6,7 +6,6 @@ export default function Index() {
 
   return <Page title="Inicio">
     <div className='flex flex-col justify-center items-center gap-4 h-64'>
-      <img src="tema.png" alt="Tema do retiro" className="w-56" />
       {
         permitirInscricao === true
           ? <a
