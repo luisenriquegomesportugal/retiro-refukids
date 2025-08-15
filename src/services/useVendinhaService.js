@@ -51,6 +51,16 @@ export const useVendinhaService = () => {
     setLoading(false);
   }, []);
 
+  const finalizarVenda = useCallback(async (inscrito, compraIndex) => {
+    setLoading(true);
+
+    let vendinhaPath = `inscritos/${inscrito.rede}/${inscrito.nome}/vendinha/${compraIndex};cancelado`;
+    let vendinhaRef = ref(firebaseDatabase, vendinhaPath);
+    await set(vendinhaRef, true);
+
+    setLoading(false);
+  }, []);
+
   return {
     quitarVenda,
     finalizarVenda,
