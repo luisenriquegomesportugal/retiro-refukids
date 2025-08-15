@@ -6,7 +6,7 @@ export const Page = ({ title, actions, children }) => {
     <Head>
       <title>{title}</title>
     </Head>
-    <div className="bg-indigo-800 pb-16">
+    <div className="bg-[#9c2135] pb-16">
       <HeaderNavigation current={title} />
       <header className="max-w-7xl mx-auto px-6 xl:px-0 pt-16 pb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
         <h1 className="text-2xl font-bold text-white">{title}</h1>
