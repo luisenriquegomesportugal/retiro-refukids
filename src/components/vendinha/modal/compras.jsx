@@ -10,7 +10,7 @@ import { useVendinhaService } from "../../../services/useVendinhaService";
 export const ComprasVendinhaModal = ({ inscrito }) => {
     const [visible, setVisible] = useState(false);
     const { formatDate } = useFormats();
-    const { quitarVenda, loading } = useVendinhaService();
+    const { quitarVenda, cancelarVenda, loading } = useVendinhaService();
 
     const pagarCompras = async () => {
         await quitarVenda(inscrito);
@@ -96,8 +96,12 @@ export const ComprasVendinhaModal = ({ inscrito }) => {
                 </Column>
                 <Column
                     header="Situação"
-                    body={({ pago }) =>
-                        <Badge
+                    body={({ pago, cancelado }) => cancelado 
+                    ? <Badge
+                            value={"Cancelado"}
+                            severity={"danger"}
+                        ></Badge>
+                    : <Badge
                             value={pago ? "Pago" : "Falta pagar"}
                             severity={pago ? "success" : "warning"}
                         ></Badge>
@@ -108,6 +112,11 @@ export const ComprasVendinhaModal = ({ inscrito }) => {
                         new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
                             .format(valor * Number.parseInt(quantidade))
                     }></Column>
+                <Column
+                    header="#"
+                    body={({ pago, cancelado }, {rowIndex}) => !pago
+                    ? <Button onClick={() => cancelarVenda(inscrito, rowIndex)}>Cancelar</Button>
+                : null}></Column>
             </DataTable>
         </Dialog>
     </Fragment>;
