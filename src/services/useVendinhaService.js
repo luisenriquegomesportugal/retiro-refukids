@@ -51,7 +51,7 @@ export const useVendinhaService = () => {
     setLoading(false);
   }, []);
 
-  const finalizarVenda = useCallback(async (inscrito, compraIndex) => {
+  const cancelarVenda = useCallback(async (inscrito, compraIndex) => {
     setLoading(true);
 
     let vendinhaPath = `inscritos/${inscrito.rede}/${inscrito.nome}/vendinha/${compraIndex};cancelado`;
@@ -64,6 +64,7 @@ export const useVendinhaService = () => {
   return {
     quitarVenda,
     finalizarVenda,
+    cancelarVenda,
     produtos,
     loading
   }
