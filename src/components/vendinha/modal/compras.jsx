@@ -18,7 +18,8 @@ export const ComprasVendinhaModal = ({ inscrito }) => {
     }
 
     const getTotal = (pago) => {
-        let compras = inscrito.vendinha || [];
+        let compras = (inscrito.vendinha || [])
+            .filter(venda => !venda.cancelado);
 
         if (pago !== undefined) {
             compras = compras.filter(compra => compra.pago === pago);
