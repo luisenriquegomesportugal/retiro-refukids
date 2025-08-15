@@ -114,8 +114,8 @@ export const ComprasVendinhaModal = ({ inscrito }) => {
                     }></Column>
                 <Column
                     header="#"
-                    body={({ pago, cancelado }, {rowIndex}) => !pago
-                    ? <Button onClick={() => cancelarVenda(inscrito, rowIndex)}>Cancelar</Button>
+                    body={({ pago, cancelado }, {rowIndex}) => !cancelado && !pago
+                    ? <Button severity="danger" size="small" onClick={() => cancelarVenda(inscrito, rowIndex)}>Cancelar</Button>
                 : null}></Column>
             </DataTable>
         </Dialog>
