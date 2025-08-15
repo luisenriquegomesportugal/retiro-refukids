@@ -54,7 +54,7 @@ export const useVendinhaService = () => {
   const cancelarVenda = useCallback(async (inscrito, compraIndex) => {
     setLoading(true);
 
-    let vendinhaPath = `inscritos/${inscrito.rede}/${inscrito.nome}/vendinha/${compraIndex};cancelado`;
+    let vendinhaPath = `inscritos/${inscrito.rede}/${inscrito.nome}/vendinha/${compraIndex}/cancelado`;
     let vendinhaRef = ref(firebaseDatabase, vendinhaPath);
     await set(vendinhaRef, true);
 
