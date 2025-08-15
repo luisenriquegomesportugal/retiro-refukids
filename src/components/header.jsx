@@ -32,13 +32,6 @@ export const HeaderNavigation = ({ current }) => {
 
   return <div className="max-w-7xl mx-auto px-6 xl:px-0">
     <div className="flex flex-col md:flex-row items-center justify-between h-24">
-      <div className="flex-shrink-0">
-        <img
-          className="h-20"
-          src="/logo.png"
-          alt="Workflow"
-        />
-      </div>
       <div className="flex items-baseline space-x-4 my-4">
         {!loading && navigation.map((item, itemIdx) =>
           <a
