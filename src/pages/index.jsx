@@ -6,7 +6,7 @@ export default function Index() {
 
   return <Page title="Inicio">
     <div className='flex flex-col justify-center items-center gap-4 h-64'>
-      <h1>Retiro - Redes 7+13+16</h1>
+      <h1 className="font-bold">Retiro - Redes 7+13+16</h1>
       {
         permitirInscricao === true
           ? <a
