@@ -10,7 +10,7 @@ export default function Vendinha() {
   const { produtos, loading } = useVendinhaService();
 
   const buildSaldoColumn = (inscrito) => {
-    let saldoGrupo = (inscrito.vendinha ? inscrito.vendinha : []).reduce(
+    let saldoGrupo = (inscrito.vendinha ? inscrito.vendinha : []).filter(venda => !venda.cancelado).reduce(
       (sa, venda) => sa + (venda.pago ? 0 : (Number.parseInt(venda.quantidade) * venda.valor)), 0.0)
 
     return <Badge key={`saldo-${inscrito.rede}-${inscrito.nome}`}
